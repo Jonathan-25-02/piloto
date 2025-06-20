@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Predio;
 use Illuminate\Http\Request;
 
 class PredioController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra todos los predios.
      */
     public function index()
     {
@@ -17,7 +17,7 @@ class PredioController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo predio.
      */
     public function create()
     {
@@ -25,37 +25,31 @@ class PredioController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda un nuevo predio en la base de datos.
      */
     public function store(Request $request)
     {
         Predio::create($request->all());
 
-    return redirect()->route('predios.index')
-        ->with('success', 'Predio registrado correctamente');
+        return redirect()->route('predios.index')
+            ->with('success', 'Predio registrado correctamente');
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el formulario para editar un predio.
      */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $predio = Predio::findOrFail($id);
+        return view('predios.editar', compact('predio'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Actualiza un predio específico.
      */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
+        $predio = Predio::findOrFail($id);
         $predio->update($request->all());
 
         return redirect()->route('predios.index')
@@ -63,10 +57,14 @@ class PredioController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina un predio de la base de datos.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $predio = Predio::findOrFail($id);
+        $predio->delete();
+
+        return redirect()->route('predios.index')
+            ->with('success', 'Predio eliminado correctamente');
     }
 }

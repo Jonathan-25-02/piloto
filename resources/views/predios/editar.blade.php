@@ -70,23 +70,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
-                <div class="col-md-5">
-                    <label for=""><b>COORDENADA N° 4</b></label> <br>
-                    <label for=""><b>Latitud:</b></label><br>
-                    <input type="number" name="latitud4" id="latitud4"
-                    class="form-control" readonly placeholder="Seleccione ..."
-                    value="{{ $predio->latitud4 }}"><br>
-                    <label for=""><b>Longitud:</b></label><br>
-                    <input type="number" name="longitud4" id="longitud4"
-                    class="form-control" readonly placeholder="Seleccione ..."
-                    value="{{ $predio->longitud4 }}">
-                </div>
-                <div class="col-md-7">
-                    <div id="mapa4" style="height:180px; 
-                    width:100%; border:2px solid black;"></div>
-                </div>
-            </div>
+            
 
             <br>
             <center>
@@ -210,42 +194,7 @@
 
 
 
-        //INICIO COORDENADA 4
-        var mapa4=new google.maps.Map(
-          document.getElementById('mapa4'),
-          {
-            center:latitud_longitud,
-            zoom:15,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-          }
-        );
-        var marcador4=new google.maps.Marker({
-          position:latitud_longitud,
-          map:mapa4,
-          title:"Seleccione la coordenada 4",
-          draggable:true
-        });
-        google.maps.event.addListener(
-          marcador4,
-          'dragend',
-          function(event){
-            var latitud=this.getPosition().lat();
-            var longitud=this.getPosition().lng();
-            document.getElementById("latitud4").value=latitud;
-            document.getElementById("longitud4").value=longitud;
-          }
-        );
-        //FIN COORDENADA 4
 
-        //Dibujando el mapa del poligono
-        mapaPoligono = new google.maps.Map(
-               document.getElementById("mapa-poligono"), {
-          zoom: 15,
-          center: latitud_longitud, 
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-        });
-
-      }
 
 
       function graficarPredio(){
@@ -267,17 +216,14 @@
                     document.getElementById('longitud3').value
             );
             
-            var coordenada4=new google.maps.LatLng(
-                    document.getElementById('latitud4').value,
-                    document.getElementById('longitud4').value
-            );
+
             
             //Arreglo con las 4 coordenadas
             var coordenadas = [
                 coordenada1,
                 coordenada2,
-                coordenada3,
-                coordenada4
+                coordenada3
+     
             ];
 
             // Crear el polígono

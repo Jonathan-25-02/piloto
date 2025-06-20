@@ -64,19 +64,7 @@
             </div>
             <br>
 
-            {{-- Coordenada 4 (sin hora) --}}
-            <div class="row">
-                <div class="col-md-5">
-                    <label><b>COORDENADA N° 4</b></label><br>
-                    <label><b>Latitud:</b></label>
-                    <input type="number" name="latitud4" id="latitud4" class="form-control" readonly><br>
-                    <label><b>Longitud:</b></label>
-                    <input type="number" name="longitud4" id="longitud4" class="form-control" readonly>
-                </div>
-                <div class="col-md-7">
-                    <div id="mapa4" style="height:180px; width:100%; border:2px solid black;"></div>
-                </div>
-            </div>
+
 
             <br>
             <center>
@@ -135,7 +123,6 @@
         configurarMapa('mapa1', 'latitud1', 'longitud1', 'hora_p1');
         configurarMapa('mapa2', 'latitud2', 'longitud2', 'hora_p2');
         configurarMapa('mapa3', 'latitud3', 'longitud3', 'hora_p3');
-        configurarMapa('mapa4', 'latitud4', 'longitud4', null);
 
         mapaPoligono = new google.maps.Map(document.getElementById("mapa-poligono"), {
             zoom: 15,
@@ -148,8 +135,7 @@
         var coordenadas = [
             new google.maps.LatLng(document.getElementById('latitud1').value, document.getElementById('longitud1').value),
             new google.maps.LatLng(document.getElementById('latitud2').value, document.getElementById('longitud2').value),
-            new google.maps.LatLng(document.getElementById('latitud3').value, document.getElementById('longitud3').value),
-            new google.maps.LatLng(document.getElementById('latitud4').value, document.getElementById('longitud4').value)
+            new google.maps.LatLng(document.getElementById('latitud3').value, document.getElementById('longitud3').value)
         ];
 
         var poligono = new google.maps.Polygon({

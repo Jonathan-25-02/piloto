@@ -12,7 +12,7 @@
     <!-- Navbar de Bootstrap -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">APP MAPA</a>
+            <a class="navbar-brand" href="{{ url('/') }}">APP MAPA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,19 +20,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Inicio</a>
                     </li>
+                    {{-- Rutas de clientes comentadas para evitar errores --}}
+                    {{-- 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('clientes.create') }}">NUEVO CLIENTE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url ('clientes/mapa')}} ">REPORTE DE MAPA</a>
+                        <a class="nav-link" href="{{ url('clientes/mapa') }}">REPORTE DE MAPA</a>
                     </li>
+                    --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url ('predios/create')}} ">REGISTRAR PREDIO</a>
+                        <a class="nav-link" href="{{ route('predios.create') }}">REGISTRAR PREDIO</a>
                     </li>
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
@@ -47,7 +48,6 @@
     </script>
 
     <div class="container my-4">
-      
         @yield('contenido')
     </div>
 
