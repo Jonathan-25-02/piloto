@@ -56,7 +56,10 @@ class PredioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $predio->update($request->all());
+
+        return redirect()->route('predios.index')
+            ->with('success', 'Predio actualizado correctamente');
     }
 
     /**
